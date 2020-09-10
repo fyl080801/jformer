@@ -31,7 +31,7 @@ npm run dev
 | ---------- | ----------------------------------------------------------------------------------------------------------- |
 | v-model    | 值                                                                                                          |
 | params     | 输入的参数值，只会由组件外部更新                                                                            |
-| options    | 包含 `fields` `datasource` `listensers`，对应 vjform 相应属性                                               |
+| options    | 包含 `fields` `datasource` `listeners`，对应 vjform 相应属性                                               |
 | components | 单独引用的组件，理论上 jformer 支持 vue 项目中引用的任何组件, 如果未在项目中 use 则可以传到这里实现组件支持 |
 
 ## 前缀定义
@@ -85,10 +85,12 @@ npm run dev
 {
   "component": "button",
   // 同样支持 vjform 的快速定义事件
-  "events": {
-    "name": "click",
-    "@:handler": "alert('clicked!')"
-  }
+  "events": [
+    {
+      "name": "click",
+      "@:handler": "alert('clicked!')"
+    }
+  ]
 }
 ```
 
