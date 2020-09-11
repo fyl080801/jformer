@@ -31,7 +31,7 @@ npm run dev
 | ---------- | ----------------------------------------------------------------------------------------------------------- |
 | v-model    | 值                                                                                                          |
 | params     | 输入的参数值，只会由组件外部更新                                                                            |
-| options    | 包含 `fields` `datasource` `listeners`，对应 vjform 相应属性                                               |
+| options    | 包含 `fields` `datasource` `listeners`，对应 vjform 相应属性                                                |
 | components | 单独引用的组件，理论上 jformer 支持 vue 项目中引用的任何组件, 如果未在项目中 use 则可以传到这里实现组件支持 |
 
 ## 前缀定义
@@ -117,20 +117,15 @@ npm run dev
   "datasource": {
     "list": {
       "type": "request",
-      "options": {
-        "method": "GET",
-        "url": "http://localhost:8080/paths/data.json",
-        "params": {}
-      }
+      "method": "GET",
+      "url": "http://localhost:8080/paths/data.json",
+      "params": {}
     },
     "detail": {
       "type": "request",
-      "options": {
-        "method": "GET",
-        "url": "http://localhost:8080/paths/data.json",
-        "params": {}
-      },
-      "on": {}
+      "method": "GET",
+      "url": "http://localhost:8080/paths/detail.json",
+      "params": {}
     }
   },
   "listeners": [
@@ -138,9 +133,9 @@ npm run dev
       "watch": "model.text",
       "deep": false,
       "actions": [
-        { "@:handle": "datasource.load()", "$:condition": "model.text.length >= 4" },
-        { "@:handle": "detail.load()" },
-        { "@text2:handle": "model.text + 'xxx'" }
+        { "@:handler": "datasource.load()", "$:condition": "model.text.length >= 4" },
+        { "@:handler": "detail.load()" },
+        { "@text2:handler": "model.text + 'xxx'" }
       ]
     }
   ],
