@@ -1,7 +1,7 @@
 {
   "name": "jformer",
-  "version": "0.1.0",
-  "description": "根据 vjform 的设计思路，设计一个简化版的 json 解析方式",
+  "version": "0.1.1",
+  "description": "基于vjform 二次开发，简化了 json 定义方式且支持 vjform 全部功能",
   "main": "dist/jformer.umd.js",
   "module": "dist/jformer.esm.js",
   "engines": {

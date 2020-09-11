@@ -53,7 +53,7 @@ const webpackConfig = [
       path: utils.resolve('../dist'),
       filename: '[name].umd.js',
       libraryTarget: 'umd',
-      library: 'VueJsonDesign',
+      library: 'JFormer',
       umdNamedDefine: true
     },
     plugins
@@ -64,7 +64,7 @@ const webpackConfig = [
       path: utils.resolve('../dist'),
       filename: '[name].esm.js',
       libraryTarget: 'commonjs2',
-      library: 'VueJsonDesign'
+      library: 'JFormer'
     },
     plugins
   })
