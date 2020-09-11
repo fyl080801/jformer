@@ -46,6 +46,7 @@ npm run dev
 | #               | 文本模板                |
 | @               | 事件                    |
 | @<`model` 属性> | 更新 `model` 属性的事件 |
+| ^               | 禁止转换                |
 
 ### 表达式
 
@@ -112,7 +113,101 @@ npm run dev
 }
 ```
 
-## 完整示例
+## 禁止转换
+
+在属性上加入 `^` 前缀，则属性的值不做转换，保持原有的值
+
+当出现 jformer 嵌套 jformer 或者自定义组件里使用了 jformer 的时候，嵌套的 jformer 属性需要在内部进行处理而不是由外层统一转换处理的时候，可以在组件相应属性上加入 `^` 标识
+
+实现一个 Repeat 组件，内部使用 jformer 呈现动态视图
+
+```html
+<template>
+  <div v-if="!updating">
+    <j-former
+      :key="index"
+      v-for="(item, index) in data"
+      :value="item"
+      :params="{ ...params, $index: index }"
+      :options="options"
+    ></j-former>
+  </div>
+</template>
+
+<script>
+  export default {
+    props: {
+      data: Array,
+      params: Object,
+      options: Object
+    },
+    watch: {
+      'data.length': {
+        handler() {
+          this.updating = true
+          this.$nextTick(() => {
+            this.updating = false
+          })
+        }
+      }
+    },
+    data() {
+      return {
+        updating: false
+      }
+    }
+  }
+</script>
+```
+
+在 jformer 中使用 Repeat 组件
+
+```json
+{
+  "fields": [
+    {
+      "component": "v-repeat", // 自定义组件，实现根据数组数据遍历生成界面，内部使用 jformer 呈现界面
+      "fieldOptions": {
+        "props": {
+          "$:data": "model.listData",
+          "params": {
+            "$:listData": "model.listData" // 为了在组件内部实现删除功能，以 params 方式将原数组传递给内部
+          },
+          // 使用 ^ 前缀，外层 jformer 不对属性值进行转换，而是由内部处理
+          "^:options": {
+            "fields": [
+              {
+                "component": "div",
+                "fieldOptions": {
+                  "style": { "border": "1px solid black", "margin": "10px", "padding": "5px" }
+                },
+                "children": [
+                  { "component": "p", "#:text": "第 ${params.$index + 1} 项" },
+                  { "component": "input", "model": ["text"] },
+                  {
+                    "component": "button",
+                    "text": "delete",
+                    "fieldOptions": {
+                      "on": { "@:click": "params.listData.splice(params.$index ,1)" }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "component": "button",
+      "text": "add item",
+      "fieldOptions": { "on": { "@:click": "model.listData.push({})" } }
+    }
+  ]
+}
+```
+
+## JSON 定义完整示例
 
 ```json
 {

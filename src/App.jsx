@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { Select } from './components/Select'
+import Repeat from './components/Repeat.vue'
 
 export const App = Vue.extend({
   data() {
@@ -7,7 +8,9 @@ export const App = Vue.extend({
       params: { extra: 'hello!!' },
       model: {
         text: 'aaaa',
-        select: 1
+        select: 1,
+        obj: { select: 1 },
+        listData: []
       },
       options: {
         datasource: {
@@ -43,9 +46,12 @@ export const App = Vue.extend({
           },
           {
             component: 'v-select',
-            model: ['select2'],
             fieldOptions: {
-              props: { '$:items': 'sourcedata.selects' }
+              props: {
+                '$:value': 'model.obj.select',
+                '$:items': 'sourcedata.selects'
+              },
+              on: { '@obj.select:input': 'arguments[0]' }
             }
           },
           { component: 'h2', text: '- 事件' },
@@ -53,6 +59,44 @@ export const App = Vue.extend({
             component: 'button',
             text: 'click',
             fieldOptions: { on: { '@:click': 'alert(model.text)' } }
+          },
+          { component: 'h2', text: '- 动态组件嵌套' },
+          {
+            component: 'v-repeat',
+            fieldOptions: {
+              props: {
+                '$:data': 'model.listData',
+                params: {
+                  '$:listData': 'model.listData'
+                },
+                '^:options': {
+                  fields: [
+                    {
+                      component: 'div',
+                      fieldOptions: {
+                        style: { border: '1px solid black', margin: '10px', padding: '5px' }
+                      },
+                      children: [
+                        { component: 'p', '#:text': '第 ${params.$index} 项' },
+                        { component: 'input', model: ['text'] },
+                        {
+                          component: 'button',
+                          text: 'delete',
+                          fieldOptions: {
+                            on: { '@:click': 'params.listData.splice(params.$index ,1)' }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            component: 'button',
+            text: 'add item',
+            fieldOptions: { on: { '@:click': 'model.listData.push({})' } }
           }
         ]
       }
@@ -65,7 +109,7 @@ export const App = Vue.extend({
           v-model={this.model}
           options={this.options}
           params={this.params}
-          components={{ 'v-select': Select }}
+          components={{ 'v-select': Select, 'v-repeat': Repeat }}
         ></j-former>
         <p>{JSON.stringify(this.model)}</p>
       </div>
