@@ -8,6 +8,9 @@
     "node": ">= 8.0.0",
     "npm": ">= 3.0.0"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
