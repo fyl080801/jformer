@@ -36,6 +36,55 @@ npm run dev
 | options    | 包含 `fields` `datasource` `listeners`，对应 vjform 相应属性                                                |
 | components | 单独引用的组件，理论上 jformer 支持 vue 项目中引用的任何组件, 如果未在项目中 use 则可以传到这里实现组件支持 |
 
+## fields 组件定义规则
+
+fields 属性定义内部组件，一个内部组件具有如下属性
+
+| 属性         | 说明                                                                                                                                                                                               |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| component    | 组件名称，支持 vue 项目中引用的组件具有的名称                                                                                                                                                      |
+| fieldOptions | 组件的属性，是 vue 的 render 方法中 createElement 的第二个参数，具体参考 [Vue 官方定义](https://cn.vuejs.org/v2/guide/render-function.html#%E6%B7%B1%E5%85%A5%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1) |
+| children     | 组件的下级元素                                                                                                                                                                                     |
+
+json 定义示例
+
+```json
+{
+  "component": "div",
+  "fieldOptions": {
+    "class": "",
+    "style": {
+      "margin": "10px"
+    },
+    "domProps": {}
+  },
+  "children": []
+}
+```
+
+部分组件支持属性的快捷定义，使用 `vjform` 注册的快捷定义均可支持，常用快捷定义如下
+
+| 属性      | 说明                                                      |
+| --------- | --------------------------------------------------------- |
+| text      | 相当于 `fieldOptions.domProps.innerText` 属性             |
+| condition | 根据条件决定组件是否存在，可配合 `$` 前缀实现表达式和关联 |
+| events    | 定义组件的事件行为                                        |
+
+```json
+[
+  {
+    "component": "p",
+    "text": "文本"
+  },
+  {
+    "component": "button",
+    "events": [{ "name": "click", "@:handler": "alert('点击事件')" }]
+  }
+]
+```
+
+fieldOptions 里的属性和组件的快捷定义均可以通过前缀定义进行属性和事件的关联
+
 ## 前缀定义
 
 前缀定义实际上是简化了原来的转换定义，在属性名上加上相应前缀实现转换功能
