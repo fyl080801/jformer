@@ -18,7 +18,12 @@ export default {
   props: {
     value: Object,
     params: Object,
-    options: Object,
+    options: {
+      type: Object,
+      default: function() {
+        return {}
+      }
+    },
     components: Object
   },
   components: { 'v-jform': VJForm }
