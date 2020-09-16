@@ -1,0 +1,74 @@
+{
+  "datasource": {
+    "list": { "type": "request", "url": "/data/tabledata.json", "autoload": false },
+    "innerForm": {
+      "type": "fetchJson",
+      "url": "/data/form.json",
+      "method": "GET",
+      "@innerData:onExecuted": "arguments[0].model"
+    }
+  },
+  "listeners": [
+    {
+      "watch": "model.text",
+      "immediate": true,
+      "actions": [{ "@length:handler": "model.text.length" }]
+    }
+  ],
+  "model": { "text": "xxx", "innerData": {} },
+  "fields": [
+    {
+      "component": "h1",
+      "text": "远程读取表单配置"
+    },
+    {
+      "component": "p",
+      "$:text": "model.text"
+    },
+    {
+      "component": "div",
+      "children": [{ "component": "input", "model": "text" }]
+    },
+    {
+      "component": "div",
+      "children": [
+        {
+          "component": "button",
+          "text": "读取数据",
+          "events": [{ "name": "click", "@:handler": "datasource.list.load()" }]
+        }
+      ]
+    },
+    {
+      "component": "p",
+      "#:text": "远程数据：${JSON.stringify(sourcedata.list || {})}"
+    },
+    {
+      "component": "h1",
+      "text": "远程加载表单"
+    },
+    {
+      "component": "button",
+      "text": "无限动态加载表单",
+      "fieldOptions": { "on": { "@:click": "datasource.innerForm.execute()" } }
+    },
+    {
+      "component": "j-former",
+      "$:condition": "!datasource.innerForm.loading",
+      "fieldOptions": {
+        "style": { "border": "1px solid gray", "padding": "20px" },
+        "on": {
+          "@innerData:input": "arguments[0]"
+        },
+        "props": {
+          "$:value": "model.innerData",
+          "options": {
+            "$:fields": "sourcedata.innerForm.fields",
+            "$:datasource": "sourcedata.innerForm.datasource",
+            "$:listeners": "sourcedata.innerForm.listeners"
+          }
+        }
+      }
+    }
+  ]
+}
