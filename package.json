@@ -2,8 +2,8 @@
   "name": "jformer",
   "version": "0.2.2-beta.2",
   "description": "基于vjform 二次开发，简化了 json 定义方式且支持 vjform 全部功能",
-  "main": "dist/jformer.umd.js",
-  "module": "dist/jformer.esm.js",
+  "main": "dist/jformer.umd.min.js",
+  "module": "dist/jformer.common.js",
   "engines": {
     "node": ">= 8.0.0",
     "npm": ">= 3.0.0"
