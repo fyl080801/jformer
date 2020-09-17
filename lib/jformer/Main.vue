@@ -1,11 +1,12 @@
 <template>
   <v-jform
     v-model="value"
+    :params="params"
     :components="components"
     :fields="options.fields"
     :listeners="options.listeners"
     :datasource="options.datasource"
-    :params="params"
+    :options="options.config"
   ></v-jform>
 </template>
 
