@@ -3,7 +3,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import jformer from '../lib'
 
-import './lib/fetch'
+import './lib/fetchJson'
+import './lib/customFunction'
 
 Vue.config.productionTip = false
 
@@ -16,6 +17,7 @@ new Vue({
     routes: [
       { path: '/simple', component: () => import('./views/Simple') },
       { path: '/remote', component: () => import('./views/Remote') },
+      { path: '/functional', component: () => import('./views/Functional') },
       { path: '/', redirect: '/simple' }
     ]
   }),

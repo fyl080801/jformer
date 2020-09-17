@@ -27,7 +27,10 @@
     },
     {
       "component": "div",
-      "children": [{ "component": "input", "model": "text" }]
+      "children": [
+        { "component": "input", "model": "text" },
+        { "component": "span", "#:text": "输入了 ${model.length} 个字符" }
+      ]
     },
     {
       "component": "div",

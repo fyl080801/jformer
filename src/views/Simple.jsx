@@ -81,7 +81,7 @@ export default Vue.extend({
                         { component: 'input', model: ['text'] },
                         {
                           component: 'button',
-                          text: 'delete',
+                          text: '删除',
                           fieldOptions: {
                             on: { '@:click': 'params.listData.splice(params.$index ,1)' }
                           }
@@ -95,7 +95,7 @@ export default Vue.extend({
           },
           {
             component: 'button',
-            text: 'add item',
+            text: '添加项',
             fieldOptions: { on: { '@:click': 'model.listData.push({})' } }
           }
         ]
@@ -105,6 +105,7 @@ export default Vue.extend({
   render() {
     return (
       <div>
+        <h1>简单示例</h1>
         <j-former
           v-model={this.model}
           options={this.options}
