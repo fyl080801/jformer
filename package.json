@@ -1,6 +1,6 @@
 {
   "name": "jformer",
-  "version": "0.2.2-beta.3",
+  "version": "0.2.2-beta.4",
   "description": "基于vjform 二次开发，简化了 json 定义方式且支持 vjform 全部功能",
   "main": "dist/jformer.umd.min.js",
   "module": "dist/jformer.common.js",
@@ -31,7 +31,7 @@
   "homepage": "https://github.com/fyl080801/jformer#readme",
   "dependencies": {
     "lodash-es": "^4.17.15",
-    "vjform": "^1.3.2-beta.2",
+    "vjform": "^1.4.0-beta.1",
     "vue": "^2.6.12"
   },
   "devDependencies": {

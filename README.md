@@ -113,7 +113,7 @@ fieldOptions 里的属性和组件的快捷定义均可以通过前缀定义实�
   "fieldOptions": {
     "props": {},
     "domProps": {
-      "$:innerText": "model.text.length + 1" // 这里支持直接取 model，params，datasource，sourcedata 的属性进行计算关联到属性
+      "$:innerText": "model.text.length + 1" // 这里支持直接取 model，params，datasource 的属性进行计算关联到属性
     }
   }
 }

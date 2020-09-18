@@ -44,7 +44,7 @@
     },
     {
       "component": "p",
-      "#:text": "远程数据：${JSON.stringify(sourcedata.list || {})}"
+      "#:text": "远程数据：${JSON.stringify(datasource.list.data || {})}"
     },
     {
       "component": "h1",
@@ -66,9 +66,9 @@
         "props": {
           "$:value": "model.innerData",
           "options": {
-            "$:fields": "sourcedata.innerForm.fields",
-            "$:datasource": "sourcedata.innerForm.datasource",
-            "$:listeners": "sourcedata.innerForm.listeners"
+            "$:fields": "datasource.innerForm.data.fields",
+            "$:datasource": "datasource.innerForm.data.datasource",
+            "$:listeners": "datasource.innerForm.data.listeners"
           }
         }
       }

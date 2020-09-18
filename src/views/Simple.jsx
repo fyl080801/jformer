@@ -14,7 +14,12 @@ export default Vue.extend({
       },
       options: {
         datasource: {
-          selects: { type: 'request', method: 'GET', url: '/data/testdata.json', autoload: true }
+          selects: {
+            type: 'request',
+            method: 'GET',
+            url: '/data/testdata.json',
+            autoload: true
+          }
         },
         listeners: [
           { watch: 'model.select', actions: [{ '@:handler': 'alert("选择了" + model.select)' }] }
@@ -39,7 +44,7 @@ export default Vue.extend({
             fieldOptions: {
               props: {
                 '$:value': 'model.select',
-                '$:items': 'sourcedata.selects'
+                '$:items': 'datasource.selects.data'
               },
               on: { '@select:input': 'arguments[0]' }
             }
@@ -49,7 +54,7 @@ export default Vue.extend({
             fieldOptions: {
               props: {
                 '$:value': 'model.obj.select',
-                '$:items': 'sourcedata.selects'
+                '$:items': 'datasource.selects.data'
               },
               on: { '@obj.select:input': 'arguments[0]' }
             }
