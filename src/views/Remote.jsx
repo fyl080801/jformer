@@ -5,7 +5,7 @@ export default Vue.extend({
     return {
       loading: false,
       model: {},
-      options: {},
+      config: {},
       params: {}
     }
   },
@@ -19,9 +19,9 @@ export default Vue.extend({
         const form = await result.json()
 
         this.model = form.model
-        this.options.datasource = form.datasource
-        this.options.listeners = form.listeners
-        this.options.fields = form.fields
+        this.config.datasource = form.datasource
+        this.config.listeners = form.listeners
+        this.config.fields = form.fields
         this.params = form.params
       } finally {
         this.loading = false
@@ -35,7 +35,7 @@ export default Vue.extend({
     return (
       <div>
         {!this.loading ? (
-          <j-former v-model={this.model} options={this.options} params={this.params}></j-former>
+          <j-former v-model={this.model} config={this.config} params={this.params}></j-former>
         ) : null}
         <p>{JSON.stringify(this.model)}</p>
       </div>

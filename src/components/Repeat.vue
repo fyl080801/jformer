@@ -5,7 +5,7 @@
       v-for="(item, index) in data"
       :value="item"
       :params="{ ...params, $index: index }"
-      :options="options"
+      :config="config"
     ></j-former>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
   props: {
     data: Array,
     params: Object,
-    options: Object
+    config: Object
   },
   watch: {
     'data.length': {

@@ -5,7 +5,7 @@ export default Vue.extend({
     return {
       model: { value1: 0, value2: 0, value3: 0, value4: 0, nvalue: 0 },
       params: {},
-      options: {
+      config: {
         fields: [
           {
             component: 'p',
@@ -88,7 +88,7 @@ export default Vue.extend({
     return (
       <div>
         <h1>函数示例</h1>
-        <j-former v-model={this.model} options={this.options} params={this.params}></j-former>
+        <j-former v-model={this.model} config={this.config} params={this.params}></j-former>
         <p>{JSON.stringify(this.model)}</p>
       </div>
     )

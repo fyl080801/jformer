@@ -65,7 +65,7 @@
         },
         "props": {
           "$:value": "model.innerData",
-          "options": {
+          "config": {
             "$:fields": "datasource.innerForm.data.fields",
             "$:datasource": "datasource.innerForm.data.datasource",
             "$:listeners": "datasource.innerForm.data.listeners"

@@ -12,7 +12,7 @@ export default Vue.extend({
         obj: { select: 1 },
         listData: []
       },
-      options: {
+      config: {
         datasource: {
           selects: {
             type: 'request',
@@ -74,7 +74,7 @@ export default Vue.extend({
                 params: {
                   '$:listData': 'model.listData'
                 },
-                '^:options': {
+                '^:config': {
                   fields: [
                     {
                       component: 'div',
@@ -113,7 +113,7 @@ export default Vue.extend({
         <h1>简单示例</h1>
         <j-former
           v-model={this.model}
-          options={this.options}
+          config={this.config}
           params={this.params}
           components={{ 'v-select': Select, 'v-repeat': Repeat }}
         ></j-former>

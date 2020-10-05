@@ -1,13 +1,12 @@
 import JFormer from '../../lib/index'
 
-JFormer.base.feature
-  .datasource('fetchJson', function(getOptions) {
+JFormer.use(({ datasource }) => {
+  datasource('fetchJson', getOptions => {
     const instance = {
       execute: () => {},
       loading: false,
       data: {}
     }
-
     const execute = async () => {
       const { url, method, onExecuted, onError } = getOptions()
       try {
@@ -22,9 +21,7 @@ JFormer.base.feature
         instance.loading = false
       }
     }
-
     instance.execute = execute
-
     return instance
   })
-  .withName('fetchJson')
+})
