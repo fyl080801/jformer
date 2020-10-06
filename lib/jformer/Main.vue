@@ -7,6 +7,7 @@
     :listeners="config.listeners"
     :datasource="config.datasource"
     :options="options"
+    :initialling="initialling"
   ></v-jform>
 </template>
 
@@ -20,12 +21,11 @@ export default {
     params: Object,
     config: {
       type: Object,
-      default: function() {
-        return {}
-      }
+      default: () => ({ datasource: {}, listeners: [], fields: [] })
     },
     options: Object,
-    components: Object
+    components: Object,
+    initialling: Function
   },
   components: { 'v-jform': VJForm }
 }
