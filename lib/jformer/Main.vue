@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import VJForm from 'vjform/dist/vjform.common'
+import VJForm from 'vjform'
 
 export default {
   name: 'j-former',
