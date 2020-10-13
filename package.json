@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/fyl080801/jformer#readme",
   "dependencies": {
-    "jpresent-transform-modern": "^1.0.0",
+    "jpresent-transform-modern": "^1.0.1",
     "lodash-es": "^4.17.15",
     "vjform": "^2.0.1",
     "vue": "^2.6.12"
