@@ -32,7 +32,7 @@
   "dependencies": {
     "jpresent-transform-modern": "^1.0.1",
     "lodash-es": "^4.17.15",
-    "vjform": "^2.0.1",
+    "vjform": "^2.0.2",
     "vue": "^2.6.12"
   },
   "devDependencies": {
