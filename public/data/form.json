@@ -58,13 +58,11 @@
     {
       "component": "j-former",
       "$:condition": "!datasource.innerForm.loading",
+      "model": ["innerData"],
       "fieldOptions": {
         "style": { "border": "1px solid gray", "padding": "20px" },
-        "on": {
-          "@innerData:input": "arguments[0]"
-        },
         "props": {
-          "$:value": "model.innerData",
+          "tag": "section",
           "config": {
             "$:fields": "datasource.innerForm.data.fields",
             "$:datasource": "datasource.innerForm.data.datasource",

@@ -1,5 +1,6 @@
 <template>
   <v-jform
+    :tag="tag"
     v-model="value"
     :params="params"
     :components="components"
@@ -17,6 +18,7 @@ import VJForm from 'vjform'
 export default {
   name: 'j-former',
   props: {
+    tag: String,
     value: Object,
     params: Object,
     config: {
