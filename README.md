@@ -4,6 +4,8 @@
 
 基于 vjform 二次开发，简化了 json 定义方式且支持 vjform 全部功能
 
+配置可用 [可视化设计器](https://gitee.com/fyl080801_admin/vjdesign) 编辑
+
 ## 起步
 
 安装包
