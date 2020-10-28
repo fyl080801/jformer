@@ -18,6 +18,7 @@ new Vue({
       { path: '/simple', component: () => import('./views/Simple') },
       { path: '/remote', component: () => import('./views/Remote') },
       { path: '/functional', component: () => import('./views/Functional') },
+      { path: '/design', component: () => import('./views/Design') },
       { path: '/', redirect: '/simple' }
     ]
   }),

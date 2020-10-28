@@ -5,3 +5,4 @@ server/app/public/
 /*.js
 **/node_modules/
 output/
+node_modules

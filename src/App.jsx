@@ -5,7 +5,8 @@ export const App = Vue.extend({
     return (
       <div>
         <router-link to="/">simple</router-link> | <router-link to="/remote">remote</router-link> |{' '}
-        <router-link to="/functional">functional</router-link>
+        <router-link to="/functional">functional</router-link> |{' '}
+        <router-link to="/design">design</router-link>
         <router-view></router-view>
       </div>
     )
