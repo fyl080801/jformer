@@ -1,10 +1,10 @@
 # jformer
 
-根据 [vjform](https://gitee.com/fyl080801_admin/vjform) 的设计思路，扩展一个简化版的 json 定义方式
+根据 [vjform](https://gitee.com/fyl080801/vjform) 的设计思路，扩展一个简化版的 json 定义方式
 
 基于 vjform 二次开发，简化了 json 定义方式且支持 vjform 全部功能
 
-配置可用 [可视化设计器](https://gitee.com/fyl080801_admin/vjdesign) 编辑
+配置可用 [可视化设计器](https://gitee.com/fyl080801/vjdesign) 编辑
 
 ## 起步
 
