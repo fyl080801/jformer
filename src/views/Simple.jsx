@@ -53,8 +53,8 @@ export default Vue.extend({
             component: 'v-select',
             fieldOptions: {
               props: {
-                '$:value': 'model.obj.select',
-                '$:items': 'datasource.selects.data'
+                value: '$:model.obj.select',
+                items: '$:datasource.selects.data'
               },
               on: { '@obj.select:input': 'arguments[0]' }
             }
@@ -63,7 +63,16 @@ export default Vue.extend({
           {
             component: 'button',
             text: 'click',
-            fieldOptions: { on: { '@:click': 'alert(model.text)' } }
+            fieldOptions: { on: { click: '@:alert(model.text)' } }
+          },
+          { component: 'h2', text: '- 数组转换' },
+          {
+            component: 'ul',
+            children: {
+              $type: 'array',
+              $data: '$:datasource.selects.data',
+              $field: { component: 'li', text: '$:scope.label' }
+            }
           },
           { component: 'h2', text: '- 动态组件嵌套' },
           {
