@@ -1,7 +1,7 @@
 {
   "name": "jformer",
-  "version": "2.4.0",
-  "description": "基于vjform 二次开发，简化了 json 定义方式且支持 vjform 全部功能",
+  "version": "2.4.1",
+  "description": "基于 vjform 二次开发，简化了 json 定义方式且支持 vjform 全部功能",
   "main": "dist/jformer.umd.min.js",
   "module": "dist/jformer.common.js",
   "engines": {
@@ -34,7 +34,7 @@
     "jpresent-transform-expression": "^0.2.0",
     "jpresent-transform-modern": "^1.2.0",
     "lodash-es": "^4.17.15",
-    "vjform": "^2.3.0",
+    "vjform": "^2.4.0",
     "vue": "^2.6.12"
   },
   "devDependencies": {
